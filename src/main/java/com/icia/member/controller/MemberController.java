@@ -5,10 +5,7 @@ import com.icia.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -44,8 +41,13 @@ public class MemberController {
     public String memberLogin(@ModelAttribute MemberDTO memberDTO,
                               Model model){
         MemberDTO result = memberService.login(memberDTO);
-        model.addAttribute("member",result);
-        return "memberMain";
+        if (result!=null){
+            model.addAttribute("member",result);
+            return "memberMain";
+        }else {
+            System.out.println("로그인실패");
+            return "memberLogin";
+        }
     }
 
     @GetMapping("/member")
@@ -53,5 +55,49 @@ public class MemberController {
         MemberDTO memberDTO = memberService.findById(id);
         model.addAttribute("member",memberDTO);
         return "memberDetail";
+    }
+
+    @GetMapping("/update")
+    public String memberUpdate(@RequestParam("id") Long id, Model model){
+        MemberDTO memberDTO = memberService.findById(id);
+        model.addAttribute("member",memberDTO);
+        return "memberUpdate";
+    }
+
+    @PostMapping("/update")
+    public String memberUpdate(@ModelAttribute MemberDTO memberDTO){
+        boolean result = memberService.update(memberDTO);
+        if (result){
+            System.out.println("업데이트 성공");
+        }else {
+            System.out.println("업데이트 실패");
+        }
+        return "redirect:/member?id="+memberDTO.getId();
+    }
+
+    @GetMapping("/delete")
+    public String memberDelete(@RequestParam("id") Long id){
+        boolean result = memberService.delete(id);
+        if (result){
+            System.out.println("삭제 성공");
+            return "index";
+        }else {
+            System.out.println("삭제 실패");
+            return "redirect:/member?id="+id;
+        }
+    }
+    @GetMapping("/logout")
+    public String logout(){
+        return "index";
+    }
+
+    @PostMapping("/duplicate-check")
+    public @ResponseBody int duplicateCheck(@RequestParam("memberEmail") String memberEmail){
+        MemberDTO memberDTO = memberService.duplicatedCheck(memberEmail);
+        if (memberDTO==null){
+            return 1;
+        }else {
+            return 0;
+        }
     }
 }

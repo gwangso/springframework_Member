@@ -9,9 +9,12 @@
 <html>
 <head>
     <title>상세정보</title>
+    <%-- 부트스트랩 --%>
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+
 </head>
 <body>
-  <div class="row">
+  <div class="row m-5">
     <div class="col">
         <h2>${member.memberName}님의 정보</h2>
         <div class="card">

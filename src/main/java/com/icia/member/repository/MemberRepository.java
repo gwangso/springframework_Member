@@ -28,4 +28,19 @@ public class MemberRepository {
     public MemberDTO findById(Long id) {
         return sql.selectOne("Member.findById", id);
     }
+
+    public int update(MemberDTO memberDTO) {
+        return sql.update("Member.update", memberDTO);
+    }
+
+    public int delete(Long id) {
+        return sql.delete("Member.delete",id);
+    }
+
+    public MemberDTO duplicateCheck(String memberEmail) {
+        MemberDTO memberDTO = sql.selectOne("Member.findEmail",memberEmail);
+        return memberDTO;
+    }
+
+
 }

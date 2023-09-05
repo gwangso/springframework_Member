@@ -10,15 +10,14 @@
 <head>
     <title>회원계시판</title>
     <%-- 부트스트랩 --%>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 
 </head>
 <body>
     <div class="row m-4">
         <div clas="col">
             <h1>회원계시판 홈</h1>
-            <a href="/save">회원가입</a>&nbsp&nbsp
+            <a href="/save">회원가입</a>&nbsp;&nbsp;
             <a href="/login">로그인</a>
             <hr>
             <a href="/members">회원목록</a>

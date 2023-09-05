@@ -9,6 +9,9 @@
 <html>
 <head>
   <title>상세정보</title>
+  <%-- 부트스트랩 --%>
+  <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+
 </head>
 <body>
 <div class="row">
@@ -19,23 +22,23 @@
         <form method="post">
           <div class="input-group mb-3">
             <span class="input-group-text">이메일</span>
-            <input class="form-control" type="text" name="memberEmail">
+            <input class="form-control" type="text" name="memberEmail" value="${member.memberEmail}">
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text">비밀번호</span>
-            <input class="form-control" type="text" name="memberPassword">
+            <input class="form-control" type="text" name="memberPassword" value="${member.memberPassword}">
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text">이름</span>
-            <input class="form-control" type="text" name="memberName">
+            <input class="form-control" type="text" name="memberName" value="${member.memberName}">
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text">생년월일</span>
-            <input class="form-control" type="text" name="memberBirth">
+            <input class="form-control" type="text" name="memberBirth" value="${member.memberBirth}">
           </div>
           <div class="input-group mb-5">
             <span class="input-group-text">전화번호</span>
-            <input class="form-control" type="text" name="memberMobile">
+            <input class="form-control" type="text" name="memberMobile" value="${member.memberMobile}">
           </div>
           <div class="text-end">
             <input class="btn btn-primary" type="submit" value="저장">

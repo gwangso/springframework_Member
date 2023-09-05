@@ -12,8 +12,8 @@
 <head>
     <title>Member_List</title>
     <%-- 부트스트랩 --%>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+
 </head>
 <body>
     <div class="row m-5">
@@ -21,7 +21,6 @@
             <h2>회원목록</h2>
             <br>
             <div id="div_list">
-
                 <table class="table">
                     <tr class="table-dark">
                         <th>이메일</th>
