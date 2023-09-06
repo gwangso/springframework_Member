@@ -35,7 +35,7 @@
                         <span class="input-group-text">비밀번호</span>
                         <div class="form-floating">
                             <input id="floatingInput" class="form-control" type="password" name="memberPassword" onkeyup="passwordCheck_fn(this.value)">
-                            <label id="passwordCheck" for="floatingInput">비밀번호를 입력해주세요</label>
+                            <label id="passwordCheck" for="floatingInput" style="color:gray">비밀번호를 입력해주세요</label>
                         </div>
                     </div>
                     <div class="input-group mb-3">
@@ -127,12 +127,16 @@
 
     const passwordCheck_fn = (password) =>{
         const reg = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
-
-        if(reg.test(password)){
+        if(password=="") {
+            $("#passwordCheck").text("비밀번호를 입력해주세요.")
+            $("#passwordCheck").css('color','gray')
+        }else if(reg.test(password)){
             passwordCheck = true;
             $("#passwordCheck").text("사용 가능한 비밀번호입니다.")
+            $("#passwordCheck").css('color','green')
         }else {
             $("#passwordCheck").text("사용 불가능한 비밀번호입니다.")
+            $("#passwordCheck").css('color','red')
         }
     }
 </script>

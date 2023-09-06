@@ -12,18 +12,14 @@
   <div class="col">
     <div id="nav">
       <ul class="menu">
-        <c:choose>
-        <c:when test="${empty sessionScope.member}">
+        <li class="menu-item">
+          <a href="/">index</a>
+        </li>
+        <c:if test="${not empty sessionScope.member}">
           <li class="menu-item">
-            <a href="/">index</a>
+            <a href="/main">메인</a>
           </li>
-        </c:when>
-        <c:otherwise>
-          <li class="menu-item">
-            <a href="/main">main</a>
-          </li>
-        </c:otherwise>
-        </c:choose>
+        </c:if>
         <li class="menu-item">
           <a href="/save">회원가입</a>
         </li>

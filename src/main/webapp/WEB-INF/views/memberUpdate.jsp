@@ -14,16 +14,15 @@
   <link rel="stylesheet" href="/resources/css/main.css">
 </head>
 <body>
-<div class="row">
+<div class="row m-5">
   <div class="col">
     <%@include file="component/header.jsp"%>
     <%@include file="component/nav.jsp"%>
-    <div class="row">
+    <div class="row m-5">
       <div class="col">
 
-        <h2>${member.memberName}님의 정보</h2>
-        <div class="card p-5">
-          <div class="input-group">
+        <h2 class="mb-3">${member.memberName}님의 정보</h2>
+        <div class="card p-5 mb-3">
             <form method="post">
               <div class="input-group mb-3">
                 <span class="input-group-text">이메일</span>
@@ -41,31 +40,20 @@
                 <span class="input-group-text">생년월일</span>
                 <input class="form-control" type="text" name="memberBirth" value="${member.memberBirth}">
               </div>
-              <div class="input-group mb-5">
+              <div class="input-group mb-3">
                 <span class="input-group-text">전화번호</span>
                 <input class="form-control" type="text" name="memberMobile" value="${member.memberMobile}">
               </div>
               <div class="text-end">
-                <input class="btn btn-primary" type="submit" value="저장">
+                <input class="btn btn-primary" type="submit" value="수정">
                 <input class="btn btn-danger" type="reset" value="리셋">
               </div>
             </form>
-          </div>
         </div>
-        <button class="btn btn-primary" onclick="update_fn('${member.id}')">수정</button>
-        <button class="btn btn-danger" onclick="return_fn('${member.id}')">취소</button>
       </div>
     </div>
     <%@include file="component/footer.jsp"%>
   </div>
 </div>
 </body>
-<script>
-  const update_fn = (id) =>{
-    location.href = "/update?id="+id;
-  }
-  const return_fn = (id) =>{
-    location.href = "/delete?id="+id;
-  }
-</script>
 </html>

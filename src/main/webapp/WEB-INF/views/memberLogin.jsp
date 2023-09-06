@@ -35,11 +35,13 @@
                                     </div>
                                 </div>
                                 <div class="col-4 col-xl-2 text-center">
-                                    <button class="btn btn-primary btn-lg">로그인</button>
+                                    <button class="btn btn-outline-dark btn-lg">로그인</button>
                                 </div>
                             </div>
                         </form>
-                        <a href="/save">회원가입</a>
+                        <span>
+                            <a href="/save">회원가입</a>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -47,4 +49,8 @@
         </div>
     </div>
 </body>
+
+<script>
+    $("#dif")
+</script>
 </html>

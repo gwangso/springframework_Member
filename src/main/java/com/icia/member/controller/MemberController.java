@@ -47,10 +47,15 @@ public class MemberController {
             // 로그인 성공시 사용자의 이메일을 세션에 저장
             session.setAttribute("member", result);
 //            model.addAttribute("member",result);
-            return "memberMain";
+            return "redirect:/main";
         }else {
-            return "memberLogin";
+            return "redirect:/";
         }
+    }
+
+    @GetMapping("/main")
+    public String memberMain(HttpSession session){
+        return "memberMain";
     }
 
     @GetMapping("/member")
@@ -93,7 +98,7 @@ public class MemberController {
     public String logout(HttpSession session){
 //        session.removeAttribute("member");
         session.invalidate();
-        return "index";
+        return "redirect:/";
     }
 
     @PostMapping("/duplicate-check")

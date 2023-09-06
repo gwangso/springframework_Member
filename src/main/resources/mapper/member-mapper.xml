@@ -10,7 +10,7 @@
     </insert>
 
     <select id="findAll" resultType="member">
-        select * from member_table
+        select * from member_table where not memberEmail='admin'
     </select>
 
     <select id="login" resultType="member" parameterType="member">
