@@ -11,14 +11,21 @@
     <title>Main</title>
     <%-- 부트스트랩 --%>
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="/resources/css/main.css">
 </head>
 <body>
     <div class="row m-5">
         <div class="col">
-            <h2 class="text-center">Main</h2>
-            <a href="/member?id=${member.id}">상세정보</a> &nbsp&nbsp
-            <a href="/logout">로그아웃</a>
+            <%@include file="component/header.jsp"%>
+            <%@include file="component/nav.jsp"%>
+            <div class="row">
+                <div class="col">
+                    <h2 class="text-center">Main</h2>
+                    <a href="/member?id=${sessionScope.member.id}">${sessionScope.member.memberName}</a>님, 환영합니다. &nbsp;&nbsp;
+                    <a href="/logout">로그아웃</a>
+                </div>
+            </div>
+            <%@include file="component/footer.jsp"%>
         </div>
     </div>
 </body>

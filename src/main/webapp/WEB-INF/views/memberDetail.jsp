@@ -11,23 +11,31 @@
     <title>상세정보</title>
     <%-- 부트스트랩 --%>
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/resources/css/main.css">
 
 </head>
 <body>
   <div class="row m-5">
     <div class="col">
-        <h2>${member.memberName}님의 정보</h2>
-        <div class="card">
-            이름 : ${member.memberName}
-            <br>
-            E-mail : ${member.memberEmail}
-            <br>
-            생년월일 : ${member.memberBirth}
-            <br>
-            전화번호 : ${member.memberMobile}
+        <%@include file="component/header.jsp"%>
+        <%@include file="component/nav.jsp"%>
+        <div class="row">
+            <div class="col">
+                <h2>${member.memberName}님의 정보</h2>
+                <div class="card">
+                    이름 : ${member.memberName}
+                    <br>
+                    E-mail : ${member.memberEmail}
+                    <br>
+                    생년월일 : ${member.memberBirth}
+                    <br>
+                    전화번호 : ${member.memberMobile}
+                </div>
+                <button class="btn btn-primary" onclick="update_fn('${member.id}')">수정</button>
+                <button class="btn btn-danger" onclick="delete_fn('${member.id}')">삭제</button>
+            </div>
         </div>
-        <button class="btn btn-primary" onclick="update_fn('${member.id}')">수정</button>
-        <button class="btn btn-danger" onclick="delete_fn('${member.id}')">삭제</button>
+        <%@include file="component/footer.jsp"%>
     </div>
   </div>
 </body>

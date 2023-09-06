@@ -13,32 +13,39 @@
     <title>Member_List</title>
     <%-- 부트스트랩 --%>
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="/resources/css/main.css">
 </head>
 <body>
     <div class="row m-5">
         <div class="col">
-            <h2>회원목록</h2>
-            <br>
-            <div id="div_list">
-                <table class="table">
-                    <tr class="table-dark">
-                        <th>이메일</th>
-                        <th>이름</th>
-                        <th>생년월일</th>
-                        <th>전화번호</th>
-                    </tr>
-                    <c:forEach items="${memberList}" var="member">
-                        <tr>
-                            <td>${member.memberEmail}</td>
-                            <td>${member.memberName}</td>
-                            <td>${member.memberBirth}</td>
-                            <td>${member.memberMobile}</td>
-                        </tr>
-                    </c:forEach>
-                </table>
+            <%@include file="component/header.jsp"%>
+            <%@include file="component/nav.jsp"%>
+            <div class="row my-5 mx-3">
+                <div class="col">
+                    <h2 class="ms-3">회원목록</h2>
+                    <br>
+                    <div id="div_list">
+                        <table class="table">
+                            <tr class="table-dark">
+                                <th>이메일</th>
+                                <th>이름</th>
+                                <th>생년월일</th>
+                                <th>전화번호</th>
+                            </tr>
+                            <c:forEach items="${memberList}" var="member">
+                                <tr>
+                                    <td>${member.memberEmail}</td>
+                                    <td>${member.memberName}</td>
+                                    <td>${member.memberBirth}</td>
+                                    <td>${member.memberMobile}</td>
+                                </tr>
+                            </c:forEach>
+                        </table>
+                    </div>
+                    <button class="btn btn-success" onclick="toList_fn('/')">처음으로</button>
+                </div>
             </div>
-            <button class="btn btn-success" onclick="toList_fn('/')">처음으로</button>
+        <%@include file="component/footer.jsp"%>
         </div>
     </div>
 </body>

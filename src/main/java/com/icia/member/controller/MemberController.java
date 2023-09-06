@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -39,13 +40,15 @@ public class MemberController {
 
     @PostMapping("/login")
     public String memberLogin(@ModelAttribute MemberDTO memberDTO,
-                              Model model){
+                              Model model,
+                              HttpSession session){
         MemberDTO result = memberService.login(memberDTO);
         if (result!=null){
-            model.addAttribute("member",result);
+            // 로그인 성공시 사용자의 이메일을 세션에 저장
+            session.setAttribute("member", result);
+//            model.addAttribute("member",result);
             return "memberMain";
         }else {
-            System.out.println("로그인실패");
             return "memberLogin";
         }
     }
@@ -87,7 +90,9 @@ public class MemberController {
         }
     }
     @GetMapping("/logout")
-    public String logout(){
+    public String logout(HttpSession session){
+//        session.removeAttribute("member");
+        session.invalidate();
         return "index";
     }
 

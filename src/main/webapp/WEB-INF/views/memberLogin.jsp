@@ -11,31 +11,39 @@
     <title>Login</title>
     <%-- 부트스트랩 --%>
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/resources/css/main.css">
 </head>
 <body>
     <div class="row m-5">
         <div class="col">
-            <h2 class="text-center mb-5"><b>Login</b></h2>
-            <div class="div_login card row p-5">
-                <form method="post">
-                    <div class="col-lg-2"></div>
-                    <div class="col-8 col-lg-6">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">이메일</span>
-                            <input class="form-control" type="text" name="memberEmail" placeholder="Email">
-                        </div>
-                        <div class="input-group mb-5">
-                            <span class="input-group-text">비밀번호</span>
-                            <input class="form-control" type="password" name="memberPassword" placeholder="Password">
-                        </div>
+            <%@include file="component/header.jsp"%>
+            <%@include file="component/nav.jsp"%>
+            <div class="row">
+                <div class="col">
+                    <h2 class="text-center mb-5"><b>Login</b></h2>
+                    <div class="div_login card mx-5 p-5">
+                        <form method="post">
+                            <div class="row">
+                                <div class="col-8 col-xl-10">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">이메일</span>
+                                        <input class="form-control" type="text" name="memberEmail" placeholder="Email">
+                                    </div>
+                                    <div class="input-group ">
+                                        <span class="input-group-text">비밀번호</span>
+                                        <input class="form-control" type="password" name="memberPassword" placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="col-4 col-xl-2 text-center">
+                                    <button class="btn btn-primary btn-lg">로그인</button>
+                                </div>
+                            </div>
+                        </form>
+                        <a href="/save">회원가입</a>
                     </div>
-                    <div class="col-4 col-md-2">
-                        <button class="btn btn-primary">로그인</button>
-                    </div>
-                    <div class="col-lg-2"></div>
-                </form>
+                </div>
             </div>
-            <a href="/save">회원가입</a>
+            <%@include file="component/footer.jsp"%>
         </div>
     </div>
 </body>

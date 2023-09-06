@@ -11,44 +11,52 @@
   <title>상세정보</title>
   <%-- 부트스트랩 --%>
   <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
-
+  <link rel="stylesheet" href="/resources/css/main.css">
 </head>
 <body>
 <div class="row">
   <div class="col">
-    <h2>${member.memberName}님의 정보</h2>
-    <div class="card p-5">
-      <div class="input-group">
-        <form method="post">
-          <div class="input-group mb-3">
-            <span class="input-group-text">이메일</span>
-            <input class="form-control" type="text" name="memberEmail" value="${member.memberEmail}">
+    <%@include file="component/header.jsp"%>
+    <%@include file="component/nav.jsp"%>
+    <div class="row">
+      <div class="col">
+
+        <h2>${member.memberName}님의 정보</h2>
+        <div class="card p-5">
+          <div class="input-group">
+            <form method="post">
+              <div class="input-group mb-3">
+                <span class="input-group-text">이메일</span>
+                <input class="form-control" type="text" name="memberEmail" value="${member.memberEmail}">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text">비밀번호</span>
+                <input class="form-control" type="text" name="memberPassword" value="${member.memberPassword}">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text">이름</span>
+                <input class="form-control" type="text" name="memberName" value="${member.memberName}">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text">생년월일</span>
+                <input class="form-control" type="text" name="memberBirth" value="${member.memberBirth}">
+              </div>
+              <div class="input-group mb-5">
+                <span class="input-group-text">전화번호</span>
+                <input class="form-control" type="text" name="memberMobile" value="${member.memberMobile}">
+              </div>
+              <div class="text-end">
+                <input class="btn btn-primary" type="submit" value="저장">
+                <input class="btn btn-danger" type="reset" value="리셋">
+              </div>
+            </form>
           </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text">비밀번호</span>
-            <input class="form-control" type="text" name="memberPassword" value="${member.memberPassword}">
-          </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text">이름</span>
-            <input class="form-control" type="text" name="memberName" value="${member.memberName}">
-          </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text">생년월일</span>
-            <input class="form-control" type="text" name="memberBirth" value="${member.memberBirth}">
-          </div>
-          <div class="input-group mb-5">
-            <span class="input-group-text">전화번호</span>
-            <input class="form-control" type="text" name="memberMobile" value="${member.memberMobile}">
-          </div>
-          <div class="text-end">
-            <input class="btn btn-primary" type="submit" value="저장">
-            <input class="btn btn-danger" type="reset" value="리셋">
-          </div>
-        </form>
+        </div>
+        <button class="btn btn-primary" onclick="update_fn('${member.id}')">수정</button>
+        <button class="btn btn-danger" onclick="return_fn('${member.id}')">취소</button>
       </div>
     </div>
-    <button class="btn btn-primary" onclick="update_fn('${member.id}')">수정</button>
-    <button class="btn btn-danger" onclick="return_fn('${member.id}')">취소</button>
+    <%@include file="component/footer.jsp"%>
   </div>
 </div>
 </body>

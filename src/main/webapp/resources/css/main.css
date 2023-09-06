@@ -1,0 +1,26 @@
+.menu{
+    display: flex; /* 일렬로 정렬 */
+    align-items: center;
+    background-color: black;
+}
+.menu-item{
+    list-style-type: none;
+    margin-left: 20px;
+}
+/* menu-item 클래스가 정용된 요소 내부의 a 태그 요소*/
+.menu-item a{
+    text-decoration: none;
+    /* axormsms 기본적으로 inline 요소
+        inline 요소는 높이, 너비를 가질 수 없음.(span같은것들)
+        높이, 너비를 가지려면 block 요소여야 함.(div같은것들)
+        아래 문법은 block요소로 하는 방법임*/
+    display: block;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+
+#login-area {
+    display: flex;
+}

@@ -14,12 +14,15 @@
 
     <%-- jquery --%>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-
+    <%-- css --%>
+    <link rel="stylesheet" href="/resources/css/main.css">
 </head>
 <body>
     <div class="row m-5">
         <div class="col">
-            <div class="div-save card p-5">
+            <%@include file="component/header.jsp"%>
+            <%@include file="component/nav.jsp"%>
+            <div class="div-save card m-5 p-5">
                 <form name="frm" method="post">
                     <div class="input-group mb-3">
                         <span class="input-group-text">이메일</span>
@@ -27,9 +30,13 @@
                         &nbsp;
                         <button id="duplicate-check" class="btn btn-warning btn-sm">중복체크</button>
                     </div>
+                    <div class="">&nbsp;&nbsp;※ 문자,숫자,특수문자를 사용해 8자리 이상 15자리 이하로 설정해주세요</div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">비밀번호</span>
-                        <input class="form-control" type="text" name="memberPassword">
+                        <div class="form-floating">
+                            <input id="floatingInput" class="form-control" type="password" name="memberPassword" onkeyup="passwordCheck_fn(this.value)">
+                            <label id="passwordCheck" for="floatingInput">비밀번호를 입력해주세요</label>
+                        </div>
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">이름</span>
@@ -49,11 +56,15 @@
                     </div>
                 </form>
             </div>
+            <%@include file="component/footer.jsp"%>
         </div>
     </div>
 </body>
+
+<%-- 함수 --%>
 <script>
-    let check = false;
+    let emailCheck = false;
+    let passwordCheck = false;
 
     $("#duplicate-check").on("click", function(e){
         e.preventDefault();
@@ -68,7 +79,7 @@
                 success:function(data){
                     if (data==1){
                         alert("사용가능한 아이디입니다.")
-                        check= true;
+                        emailCheck= true;
                         $(frm.memberPassword).focus();
                     }else {
                         alert("사용 불가능한 아이디입니다.")
@@ -90,11 +101,14 @@
         if (memberEmail=="") {
             alert("아이디를 입력해주세요.")
             $(frm.memberEmail).focus();
-        } else if(!check) {
+        } else if(!emailCheck) {
             alert("아이디 중복체크를 해주세요")
         }else if (memberPassword==""){
             alert("비밀번호를 입력해주세요.")
             $(frm.memberPassword).focus();
+        }else if (!passwordCheck){
+            alert(`비밀번호가 조건에 맞지 않습니다.
+            비밀번호를 확인해주세요`)
         }else if (memberName==""){
             alert("이름을 입력해주세요.")
             $(frm.memberName).focus();
@@ -111,6 +125,15 @@
         }
     });
 
+    const passwordCheck_fn = (password) =>{
+        const reg = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
 
+        if(reg.test(password)){
+            passwordCheck = true;
+            $("#passwordCheck").text("사용 가능한 비밀번호입니다.")
+        }else {
+            $("#passwordCheck").text("사용 불가능한 비밀번호입니다.")
+        }
+    }
 </script>
 </html>
