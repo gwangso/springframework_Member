@@ -6,14 +6,24 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div class="row">
   <div class="col">
     <div id="nav">
       <ul class="menu">
-        <li class="menu-item">
-          <a href="/">index</a>
-        </li>
+        <c:choose>
+        <c:when test="${empty sessionScope.member}">
+          <li class="menu-item">
+            <a href="/">index</a>
+          </li>
+        </c:when>
+        <c:otherwise>
+          <li class="menu-item">
+            <a href="/main">main</a>
+          </li>
+        </c:otherwise>
+        </c:choose>
         <li class="menu-item">
           <a href="/save">회원가입</a>
         </li>
