@@ -16,35 +16,27 @@
 </head>
 <body>
   <div class="row m-5">
-    <div class="col">
-        <%@include file="component/header.jsp"%>
-        <%@include file="component/nav.jsp"%>
-        <div class="row m-5">
-            <div class="col">
-                <h2 class="mb-3">${member.memberName}님의 정보</h2>
-                <div class="card p-3 mb-3">
-                    이름 : ${member.memberName}
-                    <br>
-                    E-mail : ${member.memberEmail}
-                    <br>
-                    생년월일 : ${member.memberBirth}
-                    <br>
-                    전화번호 : ${member.memberMobile}
-                </div>
-                <button class="btn btn-primary btn-sm" onclick="update_fn('${member.id}')">수정</button>&nbsp;
-                <button class="btn btn-danger btn-sm" onclick="delete_fn('${member.id}')">삭제</button>
-            </div>
+      <div class="col">
+          <%@include file="component/header.jsp"%>
+          <%@include file="component/nav.jsp"%>
+          <div class="row m-5">
+              <div class="col">
+                  <h2 class="mb-3">${member.memberName}님의 정보</h2>
+                  <div class="card p-3 mb-3">
+                      이름 : ${member.memberName}
+                      <br>
+                      E-mail : ${member.memberEmail}
+                      <br>
+                      생년월일 : ${member.memberBirth}
+                      <br>
+                      전화번호 : ${member.memberMobile}
+                  </div>
+                  <a class="btn btn-primary btn-sm" href="/update?id=${member.id}">수정</a>&nbsp;
+                  <a class="btn btn-danger btn-sm" href="delete?id=${member.id}">탈퇴</a>
+              </div>
         </div>
         <%@include file="component/footer.jsp"%>
-    </div>
+      </div>
   </div>
 </body>
-<script>
-    const update_fn = (id) =>{
-        location.href = "/update?id="+id;
-    }
-    const delete_fn = (id) =>{
-        location.href = "/delete?id="+id;
-    }
-</script>
 </html>

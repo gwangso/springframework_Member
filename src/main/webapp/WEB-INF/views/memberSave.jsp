@@ -11,9 +11,8 @@
     <title>Member_Save</title>
     <%-- 부트스트랩 --%>
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
-
     <%-- jquery --%>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <%-- css --%>
     <link rel="stylesheet" href="/resources/css/main.css">
 </head>
@@ -27,7 +26,6 @@
                     <div class="input-group mb-3">
                         <span class="input-group-text">이메일</span>
                         <input class="form-control" type="text" name="memberEmail">
-                        &nbsp;
                         <button id="duplicate-check" class="btn btn-warning btn-sm">중복체크</button>
                     </div>
                     <div class="">&nbsp;&nbsp;※ 문자,숫자,특수문자를 사용해 8자리 이상 15자리 이하로 설정해주세요</div>
