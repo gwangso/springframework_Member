@@ -64,6 +64,10 @@
     let emailCheck = false;
     let passwordCheck = false;
 
+    $(frm.memberEmail).on("keyup", function(){
+        emailCheck = false;
+    })
+
     $("#duplicate-check").on("click", function(e){
         e.preventDefault();
         const memberEmail = $(frm.memberEmail).val();

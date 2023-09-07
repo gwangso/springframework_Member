@@ -73,24 +73,21 @@ public class MemberController {
     }
 
     @PostMapping("/update")
-    public String memberUpdate(@ModelAttribute MemberDTO memberDTO){
+    public @ResponseBody boolean memberUpdate(@RequestBody MemberDTO memberDTO){
         boolean result = memberService.update(memberDTO);
         if (result){
-            System.out.println("업데이트 성공");
+            return true;
         }else {
-            System.out.println("업데이트 실패");
+            return false;
         }
-        return "redirect:/member?id="+memberDTO.getId();
     }
 
     @GetMapping("/delete")
     public String memberDelete(@RequestParam("id") Long id){
         boolean result = memberService.delete(id);
         if (result){
-            System.out.println("삭제 성공");
             return "index";
         }else {
-            System.out.println("삭제 실패");
             return "redirect:/member?id="+id;
         }
     }

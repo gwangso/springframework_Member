@@ -21,7 +21,7 @@
             <div class="row my-5">
                 <div class="col">
                     <h1 class="ms-5 mb-3">회원게시판 홈</h1>
-                    <p class="ms-3">내용없음</p>
+                    <a href="/ajax">ajax 알아보기</a>
                 </div>
             </div>
             <%@include file="component/footer.jsp"%>

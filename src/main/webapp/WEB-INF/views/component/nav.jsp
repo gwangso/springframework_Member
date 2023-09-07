@@ -20,9 +20,11 @@
             <a href="/main">메인</a>
           </li>
         </c:if>
+        <c:if test="${empty sessionScope.member}">
         <li class="menu-item">
           <a href="/save">회원가입</a>
         </li>
+        </c:if>
         <c:if test="${sessionScope.member.memberEmail eq 'admin'}">
           <li class="menu-item">
             <a href="/members">회원목록</a>
