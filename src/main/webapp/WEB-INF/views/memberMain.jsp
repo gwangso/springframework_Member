@@ -25,7 +25,6 @@
                     <c:choose>
                         <c:when test="${not empty sessionScope.member}">
                             <a href="/member?id=${sessionScope.member.id}">${sessionScope.member.memberName}</a>님, 환영합니다. &nbsp;&nbsp;
-                            <a href="/logout">로그아웃</a>
                         </c:when>
                         <c:otherwise>
                             <h1 class="text-center">로그인상태가 아닙니다.</h1>

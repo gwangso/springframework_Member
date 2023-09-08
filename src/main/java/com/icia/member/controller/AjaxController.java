@@ -83,8 +83,6 @@ public class AjaxController {
             // 이메일이 중복되는 상황에서 conflict라는 응답코드를 줌
             return new ResponseEntity("이메일이 중복되었습니다.", HttpStatus.CONFLICT);
         }
-
-
         List<MemberDTO> memberDTOList = memberService.findAll();
         // 문제가 없다면 회원리스트 데이터와 200 코드를 응답으로 줌
         return new ResponseEntity<>(memberDTOList, HttpStatus.OK);

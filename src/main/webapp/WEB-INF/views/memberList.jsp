@@ -11,9 +11,21 @@
 <html>
 <head>
     <title>Member_List</title>
+    <%-- jquery --%>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+
     <%-- 부트스트랩 --%>
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="/resources/css/main.css">
+
+    <style>
+        #member:hover {
+            cursor : pointer;
+            background-color: lightgray;
+            color : #0d6efd;
+        }
+    </style>
 </head>
 <body>
     <div class="row m-5">
@@ -25,7 +37,7 @@
                     <h2 class="ms-3">회원목록</h2>
                     <br>
                     <div id="div_list">
-                        <table class="table">
+                        <table class="table align-content-center">
                             <tr class="table-dark">
                                 <th>이메일</th>
                                 <th>이름</th>
@@ -33,8 +45,12 @@
                                 <th>전화번호</th>
                             </tr>
                             <c:forEach items="${memberList}" var="member">
-                                <tr>
-                                    <td>${member.memberEmail}</td>
+                                <tr id="member" class="p-3" onclick="member_fn(${member.id})">
+                                    <td>
+                                        <p>
+                                            ${member.memberEmail}
+                                        </p>
+                                    </td>
                                     <td>${member.memberName}</td>
                                     <td>${member.memberBirth}</td>
                                     <td>${member.memberMobile}</td>
@@ -45,13 +61,41 @@
                     <button class="btn btn-success" onclick="toList_fn('/')">처음으로</button>
                 </div>
             </div>
+            <div id="member-detail">
+
+            </div>
         <%@include file="component/footer.jsp"%>
         </div>
     </div>
 </body>
+</div>
 <script>
     const toList_fn = (url) => {
         location.href = url;
+    }
+
+    const member_fn = (id) => {
+        const divMember = document.getElementById("member-detail");
+
+
+
+        $.ajax({
+            type:"get",
+            url:"/member-ajax",
+            data:{id: id},
+            success:function(data){
+                divMember.innerHTML = "<div class='card p-3 mx-5'>" +
+                    "<p>" + data.memberEmail + "</p>" +
+                    "<p>" + data.memberName + "</p>" +
+                    "<p>" + data.memberBirth + "</p>" +
+                    "<p>" + data.memberMobile + "</p>" +
+                    "</div>"
+            },
+            error:function(err){
+                alert("맴버정보를 가져오지 못했습니다.")
+                console.log(err.errorCode)
+            }
+        });
     }
 </script>
 </html>

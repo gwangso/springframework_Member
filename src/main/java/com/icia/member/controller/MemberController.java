@@ -3,6 +3,8 @@ package com.icia.member.controller;
 import com.icia.member.dto.MemberDTO;
 import com.icia.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +25,7 @@ public class MemberController {
     @PostMapping("/save")
     public String memberSave(@ModelAttribute MemberDTO memberDTO){
         memberService.save(memberDTO);
-        return "redirect:/members";
+        return "redirect:/login";
     }
 
     @GetMapping("/members")
@@ -64,6 +66,15 @@ public class MemberController {
         model.addAttribute("member",memberDTO);
         return "memberDetail";
     }
+    @GetMapping("/member-ajax")
+    public ResponseEntity memberAjax(@RequestParam("id") Long id, Model model){
+        MemberDTO memberDTO = memberService.findById(id);
+        if (memberDTO != null){
+            return new ResponseEntity<>(memberDTO, HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
     @GetMapping("/update")
     public String memberUpdate(@RequestParam("id") Long id, Model model){
@@ -99,12 +110,12 @@ public class MemberController {
     }
 
     @PostMapping("/duplicate-check")
-    public @ResponseBody int duplicateCheck(@RequestParam("memberEmail") String memberEmail){
+    public ResponseEntity duplicateCheck(@RequestParam("memberEmail") String memberEmail){
         MemberDTO memberDTO = memberService.duplicatedCheck(memberEmail);
         if (memberDTO==null){
-            return 1;
+            return new ResponseEntity<>('1', HttpStatus.OK);
         }else {
-            return 0;
+            return new ResponseEntity<>('0', HttpStatus.CONFLICT);
         }
     }
 }

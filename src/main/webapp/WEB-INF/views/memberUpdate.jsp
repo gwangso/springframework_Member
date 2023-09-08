@@ -85,22 +85,18 @@
                 url:"/duplicate-check",
                 data:{memberEmail:email.value},
                 success:function(data){
-                    if (data){
-                        emailCheck.innerHTML = "사용가능한 아이디입니다."
-                        emailCheck.style.color = "darkgreen";
-                        emailCheck.style.display = "block";
-                    }else{
-                        emailCheck.innerHTML = "사용불가능한 아이디입니다."
-                        emailCheck.style.color = "red";
-                        emailCheck.style.display = "block";
-                    }
+                    emailCheck.innerHTML = "사용가능한 아이디입니다."
+                    emailCheck.style.color = "darkgreen";
+                    emailCheck.style.display = "block";
                     duple=data;
                 },
                 error:function(err){
-
+                    emailCheck.innerHTML = "사용불가능한 아이디입니다."
+                    emailCheck.style.color = "red";
+                    emailCheck.style.display = "block";
+                    duple=err;
                 }
-            })
-
+            });
         }
     }
 
